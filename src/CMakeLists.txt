@@ -1,5 +1,6 @@
 set(SOURCES
-  FortranSimpleModel.f90
+  fdp_seirs.f90
+  fdp_simple_model.f90
   )
 
 add_executable(simple_model.exe ${SOURCES})
