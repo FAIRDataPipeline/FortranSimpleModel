@@ -5,8 +5,10 @@ project(FortranSimpleModel
   LANGUAGES Fortran C CXX # Note: C and CXX are not optional here!
   )
 
+option(NO_FETCHCONTENT "Prevent automatic download of Fortran API" OFF)
+
 find_package(fdpfort QUIET)
-if(NOT fdpfort_FOUND)
+if(NOT fdpfort_FOUND AND NOT NO_FETCHCONTENT)
   if(NOT DEFINED(FDPFORTREF))
     set(FDPFORTREF "heads/main")
   endif()
