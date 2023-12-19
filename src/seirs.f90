@@ -5,6 +5,7 @@ module fdp_seirs
   private
 
   public :: t_seirs
+  public :: run_local
 
   type, private :: t_seirs
     integer :: timesteps
@@ -174,5 +175,14 @@ contains
     end do
     close(file_unit)
   end subroutine t_seirs_write
+
+  impure subroutine run_local(input_file)
+    character(*), intent(in) :: input_file
+    type(t_seirs) :: seirs
+
+    call seirs%from_file(input_file)
+    call seirs%solve()
+    call seirs%write("data_store/fortran_simple_model.csv")
+  end subroutine run_local
 
 end module fdp_seirs
